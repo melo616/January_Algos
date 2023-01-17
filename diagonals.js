@@ -41,19 +41,23 @@ const expected2 = 0;
  * @returns {number} Represents the absolute difference between the top left to
  *    bottom right diagonal and the top right to bottom left diagonal.
  */
+// function diagonalDifference(sqrMatrix) {
+//     let rightSum = 0;
+//     let leftSum = 0;
+//     for(i=0; i<sqrMatrix.length; i++){
+//         leftSum += sqrMatrix[i][i];
+//     }
+//     let k = 0;
+//     for(j=sqrMatrix.length-1; j>=0; j--){
+//         rightSum += sqrMatrix[j][k];
+//         k++;
+//     }
+//     const diff = rightSum - leftSum;
+//     return Math.abs(diff);
+// }
+
 function diagonalDifference(sqrMatrix) {
-    let rightSum = 0;
-    let leftSum = 0;
-    for(i=0; i<sqrMatrix.length; i++){
-        leftSum += sqrMatrix[i][i];
-    }
-    let k = 0;
-    for(j=sqrMatrix.length-1; j>=0; j--){
-        rightSum += sqrMatrix[j][k];
-        k++;
-    }
-    const diff = rightSum - leftSum;
-    return Math.abs(diff);
+    return Math.abs(sqrMatrix[0][0] - sqrMatrix.map((arr, i) => sqrMatrix[0][0] += arr[i] - arr[arr.length - 1 - i])[sqrMatrix.length - 1]);
 }
 
 console.log(diagonalDifference(squareMatrix1));
